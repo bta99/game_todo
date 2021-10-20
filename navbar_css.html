@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Css</title>
+    <link rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous" />
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+        background-color: #f297;
+        margin: auto;
+        overflow-x: hidden;
+    }
+
+    .nav {
+        width: 100%;
+        height: 50px;
+        background-color: #461a42;
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 10px;
+        font-family: monospace;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .menu {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        font-family: monospace;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 5;
+    }
+
+    .menu li {
+        display: inline;
+        margin: 0 20px;
+        color: white;
+    }
+
+    .active {
+        padding: 5px 10px;
+        background-color: #ffffff;
+        color: #332f48;
+    }
+
+    #nav {
+        display: none;
+    }
+
+    .btnNav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+        display: none;
+    }
+
+    .btnNav i {
+        font-size: 25px;
+        color: white;
+    }
+
+    .menu .active {
+        background-color: #ffffff;
+        color: #332f48;
+        border-radius: 5px;
+    }
+
+    .main {
+        width: 100%;
+        height: 90vh;
+        background-color: white;
+        /* position: relative; */
+    }
+
+    .menuitem form {
+        display: none;
+    }
+
+    @media screen and (max-width:700px) {
+        .btnNav {
+            display: block;
+            cursor: pointer;
+        }
+
+        .menu {
+            width: 100%;
+            top: 100%;
+            height: auto;
+            left: 50%;
+            transform: translateX(-150%);
+            text-align: center;
+            background-color: darkgrey;
+            transition: all 0.5s;
+        }
+
+        .menu li {
+            display: block;
+            margin: 20px;
+        }
+
+        #nav:checked~label.btnNav>i {
+            color: deepskyblue;
+        }
+
+        #nav:checked~ul.menu {
+            transform: translateX(-50%);
+        }
+
+        .menuitem:hover {
+            cursor: pointer;
+            background-color: darkseagreen;
+        }
+
+        .menuitem form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .main {
+        /* overflow: hidden; */
+    }
+
+    .main h3 {
+        margin-left: 15px;
+    }
+
+    .room_main {
+        width: 100%;
+        height: 90%;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .border {
+        width: 90%;
+        height: 90%;
+        border: solid 2px darkslateblue;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .btn {
+        width: 100%;
+        height: 6vh;
+        background-color: #461a42;
+        position: relative;
+    }
+
+    .pre,
+    .next {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+        border: none;
+        color: darkslateblue;
+    }
+
+    .pre:hover,
+    .next:hover {
+        cursor: pointer;
+        background-color: rgb(153, 147, 147);
+    }
+
+    .pre {
+        margin-right: 50px;
+    }
+
+    .question {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30%;
+        font-size: 20px;
+        font-size: 30px;
+        font-family: sans-serif;
+        color: #461a42;
+    }
+
+    .answers {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .answers button {
+        width: 140px;
+        height: 50px;
+        border: solid 2px darkslateblue;
+        border-radius: 10px;
+        background-color: white;
+    }
+    .score{
+        position: absolute;
+        right:20px;
+        font-size: 25px;
+    }
+    @media screen and (max-width:480px){
+        .question{
+            font-size: 20px;
+            top: 10%;
+        }
+        .answers{
+            top:40%;
+        }
+        .answers button{
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">Quizizz Clone</div>
+            <input type="checkbox" name="" id="nav">
+            <label for="nav" class="btnNav">
+                <i class="fas fa-align-right"></i>
+            </label>
+            <ul class="menu">
+                <li class="menuitem active">Home</li>
+                <li class="menuitem">Contact</li>
+                <li class="menuitem">About</li>
+                <li class="menuitem">Account</li>
+                <li class="menuitem search">
+                    <form action="">
+                        <input type="text" id="search" name="search">
+                        <button>search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>1/10</h3>
+            <div class="room_main">
+                <div class="border">
+                    <div class="score">Score:0</div>
+                    <div class="question">
+                        Bao Lâu Thì Bán Được Một Tỷ Gói Mè?
+                    </div>
+                    <div class="answers">
+                        <button class="btnaw"> </button>
+                        <button class="btnaw"> </button>
+                        <button class="btnaw"> </button>
+                        <button class="btnaw"> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="btn">
+                <button class="pre">Previous</button>
+                <button class="next">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let button = document.querySelectorAll('.answers button');
+        let count = 1;
+        let score = 0;
+        let diem = document.querySelector('.border .score');
+        let cauhoi = document.querySelector('.main h3');
+        let debai = document.querySelector('.question');
+        // console.log(button[0].innerHTML.toString() == button[0].innerHTML);
+        let question = [
+            'Bao Lâu Thì Bán Được Một Tỷ Gói Mè?',
+            'Nhà Trắng Do Ai Sơn?',
+            'Bồ Của Vợ Bạn Là Gì Của Bạn Bạn?',
+            'Khi Nào Thì Bạn Hết Ế?',
+            'Ngày Sinh Của Người Yêu Bạn!',
+            'Tuấn Anh Sinh Ngày Mấy?',
+            'Tuấn Anh Chơi Giỏi Nhất Là Môn Thể Theo Nào?',
+            'Tuấn Anh Học Giỏi Nhất Ngôn Ngữ Lập Trình Nào?',
+            'Điền Vào Chỗ Trống:Có Công Mày Sắt Có Ngày....?',
+            'Nếu Bạn Bị Mù Thì Bạn Sẽ Làm Cách Nào Để Nhờ Người Khác Lấy Giúp Bạn Chai Nước?'
+        ]
+        let answ = [
+            ['10 năm',
+                '100 năm',
+                'Không Bao Giờ',
+                'Ngày Mai'],
+                [
+                    'Thợ Hồ',
+                    'Tổng Thống',
+                    'Vợ Tổng Thống',
+                    'Không Biết'
+                ],
+                [
+                 'Người Yêu',
+                 'Không Đủ Bình Tĩnh Để Trả Lời',
+                 'Bồ Cũ',
+                 'Bạn Thân'
+                ],
+            ['1 năm',
+                '2 năm',
+                '3 năm',
+                'Ế Cả Đời'],
+                [
+                    'Không Nhớ',
+                    'Không Biết',
+                    'Có Bồ Đâu Mà Biết',
+                    'Mới Chia Tay Hôm Qua'
+                ],[
+                    '1/1/2000',
+                    '2/5/1999',
+                    '23/9/2001',
+                    '9/9/1999'
+                ],[
+                    'Bóng Đá',
+                    'Banh Đũa',
+                    'Bóng Chuyền',
+                    'Bơi Lội'
+                ],
+                [
+                    'C++',
+                    'Javascript',
+                    'C#',
+                    'Java'
+                ],
+                [
+                    'Chai Tay',
+                    'Bê Đê',
+                    'Đen Thui',
+                    'Nên Kim'
+                ],[
+                    'Khiều Khiều',
+                    'Giằn Giụa',
+                    'Nói',
+                    'Không Biết'
+                ]
+        ]
+        let answtrue = [
+            'Không Bao Giờ',
+            'Thợ Hồ',
+            'Không Đủ Bình Tĩnh Để Trả Lời',
+            'Ế Cả Đời',
+            'Có Bồ Đâu Mà Biết',
+            '23/9/2001',
+            'Bóng Đá',
+            'Javascript',
+            'Nên Kim',
+            'Nói'
+        ]
+        let sound = [
+            'audio1.mp3','audio2.mp3','audio3.mp3'
+        ]
+        console.log(answ.length);
+        let n = 0;
+        let i = 0;
+        debai.innerHTML = question[i];
+        for (let j = i; j < button.length; j++) {
+            button[j].innerHTML = answ[i][j];
+        }
+        let song = new Audio();
+        for (let a = 0; a < button.length; a++) {
+            button[a].onclick = () => {
+                console.log(count);
+                     song.src = sound[0];
+                     song.play();
+                if (answ[n][a] == answtrue[n]) {
+                    n++;
+                    i++;
+                    count++;
+                    score++;
+                    diem.innerHTML = 'Score:'+score;
+                    cauhoi.innerHTML = count+'/10';
+                    debai.innerHTML = question[i];
+                    if(count > 10)
+                    {
+                    alert("Chúc Mừng Bạn Vượt Qua 10 Câu Hỏi!");
+                    song.src = sound[2];
+                        song.play();
+                    debai.style.display = 'none';
+                    for (let j = 0; j < button.length; j++) {
+                        button[j].style.display = 'none';
+                    }
+                    }
+                    for (let j = 0; j < button.length; j++) {
+                        button[j].innerHTML = answ[i][j];
+                    }
+                }
+                else {
+                    song.src = sound[1];
+                    song.play();
+                    n++;
+                    i++;
+                    count++;
+                    // diem.innerHTML = 'Score:'+score;
+                    cauhoi.innerHTML = count+'/10';
+                    debai.innerHTML = question[i];
+                    for (let j = 0; j < button.length; j++) {
+                        button[j].innerHTML = answ[i][j];
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
